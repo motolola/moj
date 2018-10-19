@@ -1,8 +1,39 @@
 package com.motolola.moj.service;
 
-/**
- * Created by Akinjide Motolola.
- * email: motolola@icloud.com
- */
+import com.motolola.moj.model.User;
+import com.motolola.moj.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
 public class UserService {
+
+    @Autowired
+    UserRepository repo;
+
+    public List<User> getAll()
+    {
+        return repo.findAll();
+    }
+
+    public User getOne(int id)
+    {
+        return repo.findById(id).get();
+    }
+
+    public User create(User user)
+    {
+        return repo.save(user);
+    }
+
+    public void deleteUser(int id)
+    {
+        repo.deleteById(id);
+    }
+    public User update(User user)
+    {
+       return repo.save(user);
+    }
 }
