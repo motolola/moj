@@ -20,11 +20,8 @@ public class UserService {
 
     public User getOne(int id)
     {
-        //return repo.findById(id).get();
         return repo.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
-        //.orElseThrow(new Empl);
-
     }
 
     public User create(User user)
@@ -38,6 +35,16 @@ public class UserService {
     }
     public User update(User user)
     {
-       return repo.save(user);
+
+        return repo.findById(user.getId())
+                .map(myUser -> {
+                    myUser.setFirstName(user.getFirstName());
+                    myUser.setSecondName(user.getSecondName());
+                    return repo.save(myUser);
+                })
+                .orElseGet(() -> {
+                    user.setId(user.getId());
+                    return repo.save(user);
+                });
     }
 }
