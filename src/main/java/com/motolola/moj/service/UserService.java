@@ -20,7 +20,11 @@ public class UserService {
 
     public User getOne(int id)
     {
-        return repo.findById(id).get();
+        //return repo.findById(id).get();
+        return repo.findById(id)
+                .orElseThrow(() -> new UserNotFoundException(id));
+        //.orElseThrow(new Empl);
+
     }
 
     public User create(User user)
