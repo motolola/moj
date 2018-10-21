@@ -153,4 +153,10 @@ public class UserControllerTest {
         }
     }
 
+    @After
+    public void tearDown() throws Exception
+    {
+        userService.deleteAll();
+    }
+
 }

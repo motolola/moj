@@ -47,4 +47,9 @@ public class UserService {
                     return repo.save(user);
                 });
     }
+
+    public void deleteAll()
+    {
+        repo.deleteAll();
+    }
 }
