@@ -3,6 +3,7 @@ package com.motolola.moj.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.motolola.moj.model.User;
 import com.motolola.moj.service.UserService;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

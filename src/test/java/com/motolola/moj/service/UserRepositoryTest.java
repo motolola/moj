@@ -3,6 +3,7 @@ package com.motolola.moj.service;
 import com.motolola.moj.controller.UserController;
 import com.motolola.moj.model.User;
 import com.motolola.moj.repository.UserRepository;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -84,23 +85,9 @@ public class UserRepositoryTest {
         assertTrue((initialSize - finalSize) >= 1);
     }
 
-   /* @Test
-    public void update() {
-        //create user
-        User alex = new User("Alex", "Mings", 556774);
-
-        entityManager.persist(alex);
-        entityManager.flush();
-        System.out.println("+++++++++++++++++");
-        System.out.println("+++++++++++++++++");
-        System.out.println("+++++++++++++++++");
-        System.out.println("+++++++++++++++++");
-        System.out.println(alex.getId());
-        System.out.println(alex.getFirstName());
-
-        alex.setFirstName("Alexander");
-        userRepository.save(alex);
-        //assertTrue();
-
-    }*/
+   @After
+   public void tearDown() throws Exception
+   {
+       userRepository.deleteAll();
+   }
 }
